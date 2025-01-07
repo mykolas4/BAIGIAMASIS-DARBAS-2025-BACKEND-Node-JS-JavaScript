@@ -28,7 +28,7 @@ const REGISTER = async (req, res) => {
     return res(500).json({ message: "We have some problems" });
   }
 };
-module.exports = REGISTER;
+
 
 
 const LOGIN = async (req, res) => {
@@ -62,4 +62,4 @@ const LOGIN = async (req, res) => {
   }
 };
 
-module.exports = LOGIN;
+module.exports = { REGISTER, LOGIN };
