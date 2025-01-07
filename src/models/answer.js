@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const answerSchema = new mongoose.Schema({
     answer_text: { type: String, required: true }, 
