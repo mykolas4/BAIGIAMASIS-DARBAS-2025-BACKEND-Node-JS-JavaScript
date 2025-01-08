@@ -29,5 +29,5 @@ app.listen(process.env.PORT, () => {
 });
 
 
-app.use('./routes/user', userRouter);
-app.use('./routes/answer', AnswerRouter);
+app.use(userRouter);
+app.use(AnswerRouter);
