@@ -5,13 +5,18 @@ const UserModel = require("../models/user");
 
 const REGISTER = async (req, res) => {
   try {
+    const { name, email, username, password } = req.body; 
+    if (!name || !email || !username || !password) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
+
     const salt = await bcrypt.genSalt(10); 
-    const hash = await bcrypt.hash(req.body.password, salt); 
+    const hash = await bcrypt.hash(password, salt); 
 
     const newUser = {
       id: uuidv4(),
-      email: req.body.email,
-      name: req.body.name,
+      username,
+      email,
       password: hash,
     };
 
@@ -24,7 +29,6 @@ const REGISTER = async (req, res) => {
     return res.status(500).json({ message: "Internal server error" }); 
   }
 };
-
 const LOGIN = async (req, res) => {
   try {
     console.log(req.body);
